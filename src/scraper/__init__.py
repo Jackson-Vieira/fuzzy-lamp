@@ -1,0 +1,1 @@
+default_app_config = 'fuzzy_lamp.scraper.apps.ScraperConfig'
