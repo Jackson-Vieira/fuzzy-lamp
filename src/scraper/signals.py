@@ -13,7 +13,7 @@ def link_save(sender, instance, created, **kwargs):
         # print('enviar uma task...')
         link = instance
         data = get_link_book_data(link.link)
-        
+        print('here')
         link.name = data.get('name')
         link.image_url = data.get('image_url')
         link.situation = LinkSituationChoice.calculed
