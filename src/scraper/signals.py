@@ -11,6 +11,7 @@ def link_save(sender, instance, created, **kwargs):
         # send a task
         link = instance
         data = get_link_book_data(link.link)
+        # verify data 
         print('here')
         link.name = data.get('name')
         link.image_url = data.get('image_url')

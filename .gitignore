@@ -6,3 +6,4 @@ practice.py
 scraper.py
 
 dump.rdb
+celerybeat-schedule

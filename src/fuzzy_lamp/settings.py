@@ -110,24 +110,37 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
-
-TIME_ZONE = 'UTC'
-
 USE_I18N = True
 
+TIME_ZONE = 'America/Sao_Paulo'
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/4.1/howto/static-files/
-
 STATIC_URL = 'static/'
-
-# Default primary key field type
-# https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
+# CELERY SETTINGS
 CELERY_BROKER_URL = "redis://localhost:6379"
 CELERY_RESULT_BACKEND = "redis://localhost:6379"
+CELERY_TIMEZONE = "America/Sao_Paulo"
+
+
+# In other words, with CELERY_ALWAYS_EAGER = True, these two statements run just the same:
+
+# add.delay(2, 2)
+# add(2, 2)
+
+CELERY_ALWAYS_EAGER = True
+
+CELERY_BEAT_SCHEDULE = {
+      'add-every-30-seconds': {
+        'task': 'scraper.tasks.update_book_data_price',
+        'schedule': 60*2, # 2 MINUTES
+        #'args': (16, 16),
+        'options': {
+            'expires': 15.0,
+        },
+    },
+}
