@@ -6,5 +6,6 @@ app_name = 'scraper'
 
 urlpatterns = [
     path('links/', views.Links.as_view(), name='links'),
-    path('update/', views.update, name='update')
+    path('update/', views.update, name='update'),
+    path('stats/<int:id>/', views.stats_view, name='stats')
 ]

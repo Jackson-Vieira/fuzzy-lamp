@@ -8,9 +8,7 @@ from .utils import get_link_book_data
 @receiver(post_save, sender=Link)
 def link_save(sender, instance, created, **kwargs):
     if created:
-        print('link criado')
-        # print('hora de trabalhar!')
-        # print('enviar uma task...')
+        # send a task
         link = instance
         data = get_link_book_data(link.link)
         print('here')

@@ -52,7 +52,7 @@ class Link(models.Model):
         ordering = ['price_difference', '-created']
 
 class Price(models.Model):
-    link = models.ForeignKey(Link, on_delete=models.CASCADE)
+    link = models.ForeignKey(Link, on_delete=models.CASCADE, related_name='prices')
     created = models.DateTimeField(auto_now_add=True)
     price = models.FloatField()
 
