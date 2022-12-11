@@ -9,6 +9,7 @@ def get_link_book_data(url):
     try:
         res = requests.get(url, headers=headers, timeout=1)
         soup = BeautifulSoup(res.text, "lxml")
+        
         # book name
         name = soup.select_one(selector="#productTitle").getText()
         name = name.strip()
