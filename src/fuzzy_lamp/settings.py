@@ -135,9 +135,9 @@ CELERY_TIMEZONE = "America/Sao_Paulo"
 CELERY_ALWAYS_EAGER = True
 
 CELERY_BEAT_SCHEDULE = {
-      'add-every-30-seconds': {
-        'task': 'scraper.tasks.update_book_data_price',
-        'schedule': 60*2, # 2 MINUTES
+      'update-every-60-seconds': {
+        'task': 'scraper.tasks.update_books',
+        'schedule': 60*3, 
         #'args': (16, 16),
         'options': {
             'expires': 15.0,
