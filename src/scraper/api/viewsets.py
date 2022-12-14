@@ -46,3 +46,9 @@ class LinkViewSet(ModelViewSet):
         )
         data['stats'] = stats
         return Response(data)
+
+    def create(self, request, *args, **kwargs):
+        user = request.user
+        if not (Link.objects.filter(user=user).count() > 5):
+            return super().create(request, *args, **kwargs)
+        return Response('limit of links exceeded maximum allowed is 5.', status=status.HTTP_400_BAD_REQUEST)

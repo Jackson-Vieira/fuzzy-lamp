@@ -126,21 +126,22 @@ CELERY_BROKER_URL = "redis://localhost:6379"
 CELERY_RESULT_BACKEND = "redis://localhost:6379"
 CELERY_TIMEZONE = "America/Sao_Paulo"
 
-
-# In other words, with CELERY_ALWAYS_EAGER = True, these two statements run just the same:
-
-# add.delay(2, 2)
-# add(2, 2)
-
 CELERY_ALWAYS_EAGER = True
-
 CELERY_BEAT_SCHEDULE = {
       'update-every-60-seconds': {
         'task': 'scraper.tasks.update_books',
-        'schedule': 60*3, 
+        'schedule': 30, 
         #'args': (16, 16),
         'options': {
             'expires': 15.0,
         },
     },
+}
+
+# REST FRAMEWORK SETTINGS
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES':(
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    ),
 }

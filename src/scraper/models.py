@@ -45,6 +45,8 @@ class Link(models.Model):
     old_price = models.FloatField(default=0) # set decimal places
     price_difference = models.FloatField(default=0) # set decimal places
 
+    # users = models.ForeignKey(User, on_delete=models.DO_NOTHING, related_name='links')
+
     def __str__(self):
         return str(self.name)
 
