@@ -8,3 +8,5 @@ scraper.py
 
 dump.rdb
 celerybeat-schedule
+
+frontend
