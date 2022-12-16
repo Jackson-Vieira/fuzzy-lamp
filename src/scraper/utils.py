@@ -7,7 +7,7 @@ import random
 
 def retry_if_result_none_random(result):
     r = random.random() < 0.6
-    return result is None and r # 50%
+    return result is None and r 
 
 @retrying.retry(retry_on_result=retry_if_result_none_random)
 def get_link_book_data(url, timeout=5):
