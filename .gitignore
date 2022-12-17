@@ -1,7 +1,6 @@
 *.vscode
 venv
 
-index.html
 practice.html
 practice.py
 scraper.py

@@ -1,0 +1,187 @@
+{% extends 'fuzzy_lamp/base.html' %}
+
+{% block title %} <title> Fuzzy lamp </title>{% endblock title %}
+{% block style %} 
+<style>
+    body {
+        margin: 0;  
+        font-family: 'Roboto', sans-serif; 
+        background-color: #201b2c;
+    }
+
+    body * {
+        box-sizing: border-box;
+    }
+
+    .main-login {
+        width: 100vw;
+        height: 100vh;
+        
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .left-login {
+        display: flex;
+        width: 60vh;
+        height: 100vh;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .left-login > h1 {
+        color: #77ffc0;
+    }
+
+    .left-login > img {
+        width: 35vh;
+    }
+
+    .right-login {
+        display: flex;
+        width: 50vh;
+        height: 100vh;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .card-login {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding: 30px 35px;
+        background-color: #2f2841;
+        border-radius: 20px;
+        box-shadow: 0px 10px 40px #00000056;
+    }
+
+    .card-login > h1 {
+        color: #00ff88;
+        font-weight: 800;
+        margin: 0;
+    }
+
+    .login-form {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        margin: 10px 0px;
+    }
+
+    .login-form > input {
+        width: 100%;
+        border: none;
+        border-radius: 10px;
+        padding: 15px;
+        background-color: #514869;
+        color: #f0ffffde;
+        font-size: 12pt;
+        outline: none;
+        box-sizing: border-box;
+    }
+
+    .login-form > label {
+        color:#f0ffffde ;
+        margin-bottom: 10px;
+    }
+
+    .login-form > input::placeholder{
+        color: #f0ffff94;
+    }
+
+
+    .btn-login {
+        width: 100%;
+        padding: 16px 0px;
+        margin: 25px;
+        border: none;
+        border-radius: 8px;
+        text-transform: uppercase;
+        font-weight: 800;
+        letter-spacing: 2px;
+        color: #2b134b;
+        background-color: #00ff88;
+        cursor: pointer;
+        box-shadow: 0px 10px 40px -12px #00ff8052;
+    }
+
+    @media only screen and (max-width: 950px){
+
+        .card-login{
+            width: 85%;
+        }
+    }
+
+    @media only screen and (max-width: 600px){
+    .main-login {
+        flex-direction: column;
+    }
+
+    .left-login > h1 {
+        display: none;
+    }
+
+    .left-login {
+        width: 100%;
+        height: auto;
+    }
+
+    .right-login {
+        width: 100%;
+        height: auto;
+    }
+
+    .left-login > img {
+        width: 70vw;
+    }
+
+    .card-login {
+        width: 90%;
+    }
+}
+</style>
+{% endblock style %}
+
+{% block content %}
+<main class="main-login">
+    <div class="left-login">
+        <h1></h1>
+        <img src="http://127.0.0.1:5500/images/book.jpg" alt="">
+    </div>
+    
+    <div class="right-login">
+        <div class="card-login">
+            <h1>SIGN UP</h1>
+            <div class="login-form">  
+                <label for="username">Username</label>
+                <input name="username" type="text" placeholder="username">
+            </div>
+            <div class="login-form">  
+                <label for="username">Email</label>
+                <input name="username" type="email" placeholder="dev@gmail.com">
+            </div>
+            <div class="login-form">
+                <label for="password">Password</label>
+                <input name="password" type="password" id="password" placeholder="password">
+            </div>
+            <div class="login-form">
+                <label for="password1">Confirm password</label>
+                <input name="password1" type="password" id="password1" placeholder="repeat your password" >
+            </div>
+            <button type="submit" class='btn-login' >sign up</button>
+        </div>
+    </div>
+</main>
+{% endblock content %}
+
+{% block scripts %} 
+<script>
+    
+</script>
+{% endblock scripts %}

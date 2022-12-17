@@ -1,0 +1,64 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block title %}{% endblock title %}
+
+    <link rel="stylesheet" href="{% static 'fuzzy_lamp/css/reset.css' %}">
+    <link rel="stylesheet" href="{% static 'fuzzy_lamp/css/base.css' %}">
+    
+    {% block style %} {% endblock style %}
+
+    <script src="https://kit.fontawesome.com/4fc109c18f.js" crossorigin="anonymous"></script>
+    
+</head>
+<body>
+    <!-- NAVBAR -->
+    <header>
+        <nav class="navbar">
+            <h3 id="logo">Fuzzy Lamp</h3>
+            <ul class="navbar-links">
+                    <li class="link">
+                        My Links
+                    </li>
+                    <li class="link">
+                        Lorem
+                    </li> 
+                    <li class="link">
+                        Lorem
+                    </li>
+            </ul>
+            <div>
+                <ul class="navbar-links" id="navbar-buttons">
+                    <li>
+                        <button class="btn" id="btn-post" >
+                            
+                            <span>Create a link</span>
+                        </button>
+                    </li>
+                    <li>
+                        <button class="btn" id="btn-login">
+                            Log in
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <!-- END NAVBAR -->
+
+    <main class="container">
+        {% block content %}{% endblock content %}
+    </main>
+    <footer id="footer">
+        @Jaquiso
+    </footer>
+</body>
+    <script src="{% static 'fuzzy_lamp/js/scripts.js'%}"></script>
+    {% block scripts %} {% endblock scripts %}
+</html>

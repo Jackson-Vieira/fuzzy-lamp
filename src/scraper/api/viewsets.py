@@ -1,9 +1,9 @@
 from django.db.models.aggregates import Avg, Max, Min
 
 from rest_framework import status
-from rest_framework.decorators import api_view, throttle_classes
+from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
-from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAdminUser
+from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAdminUser, IsAuthenticated
 from rest_framework.generics import ListAPIView
 from rest_framework.viewsets import ModelViewSet
 
@@ -15,14 +15,12 @@ from django.shortcuts import get_object_or_404
 from ..models import Link
 from .serializers import LinkSerializer
 
-@api_view(['GET'])
-def stats_view(request, id):
-    stats = Link.objects.filter(pk=id).values('prices__price').aggregate(
-        avg_price=Avg('prices__price'),
-        min_price=Min('prices__price'),
-        max_price=Max('prices__price')
-    )
-    return Response(stats)
+# @api_view(['GET'])
+# @permission_classes([IsAuthenticated,])
+# def myLinks(request):
+#     links = Link.objects.filter(user=request.user)
+#     serializer = LinkSerializer(links, many=True)
+#     return Response(serializer.data)
 
 class Links(ListAPIView):
     queryset = Link.objects.all() 

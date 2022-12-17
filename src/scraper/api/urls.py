@@ -6,10 +6,8 @@ from . import viewsets
 app_name = 'scraper'
 
 urlpatterns = [
-    # path('links/', viewsets.Links.as_view(), name='links'),
-    path('stats/<int:id>/', viewsets.stats_view, name='stats')
+    path('me/links/', viewsets.myLinks, name='me_links')
 ]
-
 
 router = SimpleRouter()
 router.register('links', viewsets.LinkViewSet)
