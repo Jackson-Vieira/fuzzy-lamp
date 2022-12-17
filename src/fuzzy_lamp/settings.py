@@ -26,10 +26,8 @@ SECRET_KEY = 'django-insecure-0qb#j_vizpe0asglod$95%_q91u-cxxv30suhe(d2m#q*r@3!g
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
-
-# Application definition
+ALLOWED_HOSTS=['*']
+CORS_ORIGIN_ALLOW_ALL = True
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -42,6 +40,7 @@ INSTALLED_APPS = [
     # external apps
     'rest_framework',
     'django_filters',
+    'corsheaders',
 
     # my apps
     'scraper.apps.ScraperConfig',
@@ -49,6 +48,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -135,7 +135,7 @@ CELERY_ALWAYS_EAGER = True
 CELERY_BEAT_SCHEDULE = {
       'update-every-60-seconds': {
         'task': 'scraper.tasks.update_books',
-        'schedule': 30, 
+        'schedule': 120, 
         #'args': (16, 16),
         'options': {
             'expires': 15.0,

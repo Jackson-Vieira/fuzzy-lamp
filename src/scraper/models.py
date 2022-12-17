@@ -51,7 +51,7 @@ class Link(models.Model):
         return str(self.name)
 
     class Meta:
-        ordering = ['price_difference', '-created']
+        ordering = ['-name', 'price_difference', '-created']
 
 class Price(models.Model):
     link = models.ForeignKey(Link, on_delete=models.CASCADE, related_name='prices')

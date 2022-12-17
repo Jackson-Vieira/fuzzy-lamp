@@ -12,11 +12,10 @@
     <h1>All Links</h1> 
     <div class="search">
         <input id="searchTerm" type="search" placeholder="Search for a book">
-        <button class="searchButton" type="submit">
+        <button id="searchButton" class="searchButton" type="button">
         <i class="fa-solid fa-magnifying-glass"></i>
         </button>
-</div>
-
+    </div>
 </div>
 <div>
     <form id="linkForm">
@@ -25,36 +24,25 @@
         <button type="submit">create</button>
     </form>
 </div>
-
-<!-- LINK-CARD -->
-<div class="list-cards">
-    <div>
-        <div>
-            <div class="card-book">
-                <img id="imageCardBook" src="https://m.media-amazon.com/images/I/41QGA9y1LZL._SY344_BO1,204,203,200_QL70_ML2_.jpg" alt="">
-                <div id="card-info">
-                    <h2 id="cardTitle"> Title Book <span>
-                        (Capa Comum)
-                    </span></h2> 
-                    <p> Curent price: R$ 10,00 </p>
-                    <p> Last Price: R$ 15,00 </p>
-                    <p> Difference: R$ 5,00 </p>
-                    <p id="last-updated"> Updated 2 minutes ago </p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+<!-- LINKS -->
+<div class="list-cards"></div>
 <!-- END LINK-CARD -->
 {% endblock content %}
 
 {% block scripts %} 
 <script>
+    
+
     linkForm.onsubmit = (e) => {
     e.preventDefault();
-    postLink(linkForm)
-}
+    postLink(linkForm);
+    }
 
+    document.getElementById('searchButton').addEventListener("click", () => {
+        keyword = document.getElementById('searchTerm').value
+        searchLinks(keyword)
+    })
 
+    
 </script>
 {% endblock scripts %}
