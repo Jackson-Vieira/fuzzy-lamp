@@ -1,4 +1,5 @@
 {% extends 'fuzzy_lamp/base.html' %}
+{% load static %}
 
 {% block title %} <title> Fuzzy lamp </title>{% endblock title %}
 {% block style %} 
@@ -14,10 +15,8 @@
     }
 
     .main-login {
-        width: 100vw;
-        height: 100vh;
-        
         display: flex;
+        height: 90vh;
         justify-content: center;
         align-items: center;
     }
@@ -25,24 +24,23 @@
     .left-login {
         display: flex;
         width: 60vh;
-        height: 100vh;
         justify-content: center;
         flex-direction: column;
         align-items: center;
     }
 
     .left-login > h1 {
-        color: #77ffc0;
+        color: #20a8d8;
     }
 
     .left-login > img {
-        width: 35vh;
+        width: 60vh;
+        height: 50vh;
     }
 
     .right-login {
         display: flex;
         width: 50vh;
-        height: 100vh;
         justify-content: center;
         align-items: center;
     }
@@ -54,13 +52,13 @@
         align-items: center;
         flex-direction: column;
         padding: 30px 35px;
-        background-color: #2f2841;
+        background-color: #4c78dd;
         border-radius: 20px;
         box-shadow: 0px 10px 40px #00000056;
     }
 
     .card-login > h1 {
-        color: #00ff88;
+        color: #f2efed;
         font-weight: 800;
         margin: 0;
     }
@@ -78,9 +76,9 @@
         width: 100%;
         border: none;
         border-radius: 10px;
-        padding: 15px;
-        background-color: #514869;
-        color: #f0ffffde;
+        padding: 6px;
+        background-color: #f0ffffde;
+        color: black;
         font-size: 12pt;
         outline: none;
         box-sizing: border-box;
@@ -92,7 +90,7 @@
     }
 
     .login-form > input::placeholder{
-        color: #f0ffff94;
+        color: grey;
     }
 
 
@@ -105,10 +103,10 @@
         text-transform: uppercase;
         font-weight: 800;
         letter-spacing: 2px;
-        color: #2b134b;
-        background-color: #00ff88;
+        color: #4c78dd;
+        background-color: #f0ffffde;
         cursor: pointer;
-        box-shadow: 0px 10px 40px -12px #00ff8052;
+        box-shadow: 0px 10px 40px -12px #20a8d8;
     }
 
     @media only screen and (max-width: 950px){
@@ -149,10 +147,10 @@
 {% endblock style %}
 
 {% block content %}
-<main class="main-login">
+<div class="main-login">
     <div class="left-login">
         <h1></h1>
-        <img src="" alt="" width="200px" height="400px">
+        <img src="{% static 'fuzzy_lamp/images/login.svg' %}" alt="">
     </div>
     
     <div class="right-login">
@@ -169,7 +167,7 @@
             <button type="button" class="btn-login">SIGN IN</button>
         </div>
     </div>
-</main>
+</div>
 {% endblock content %}
 
 {% block scripts %} 

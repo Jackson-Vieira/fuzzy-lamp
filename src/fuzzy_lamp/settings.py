@@ -41,6 +41,7 @@ INSTALLED_APPS = [
 
     # external apps
     'rest_framework',
+    'django_filters',
 
     # my apps
     'scraper.apps.ScraperConfig',

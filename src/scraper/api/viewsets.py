@@ -1,5 +1,8 @@
 from django.db.models.aggregates import Avg, Max, Min
 
+from django_filters import rest_framework as filters
+
+
 from rest_framework import status
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
@@ -14,7 +17,7 @@ from django.shortcuts import get_object_or_404
 
 from ..models import Link
 from .serializers import LinkSerializer
-
+from .filters import LinkFilterSet
 # @api_view(['GET'])
 # @permission_classes([IsAuthenticated,])
 # def myLinks(request):
@@ -30,6 +33,8 @@ class LinkViewSet(ModelViewSet):
     queryset = Link.objects.all()
     serializer_class = LinkSerializer
     permission_classes = [IsAuthenticatedOrReadOnly]
+    filter_backends = [filters.DjangoFilterBackend]
+    filterset_class = LinkFilterSet
 
     def retrieve(self, request, *args, **kwargs, ):
         link = self.get_object()
@@ -45,9 +50,9 @@ class LinkViewSet(ModelViewSet):
         return Response(data)
 
     def create(self, request, *args, **kwargs):
-        user = request.user
-        if not (Link.objects.filter(user=user).count() > 5):
+        link = request.data.get('link')
+        if not Link.objects.filter(link=link).exists():
             return super().create(request, *args, **kwargs)
-        return Response('limit of links exceeded maximum allowed is 5.', status=status.HTTP_400_BAD_REQUEST)
+        return Response({'This link alrealdy exists'}, status=status.HTTP_400_BAD_REQUEST)
 
     # destroy

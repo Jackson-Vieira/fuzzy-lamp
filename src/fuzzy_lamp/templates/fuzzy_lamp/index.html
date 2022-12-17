@@ -8,13 +8,24 @@
 {% endblock style %}
 
 {% block content %}
-<h1>All Links</h1>
-<div class="search">
-    <input id="searchTerm" type="search" placeholder="Search for a book">
-    <button class="searchButton" type="submit">
+<div style="display: flex; align-items:center;gap: 20px; margin-bottom: 20px;">
+    <h1>All Links</h1> 
+    <div class="search">
+        <input id="searchTerm" type="search" placeholder="Search for a book">
+        <button class="searchButton" type="submit">
         <i class="fa-solid fa-magnifying-glass"></i>
-    </button>
+        </button>
 </div>
+
+</div>
+<div>
+    <form id="linkForm">
+        <label for="url">Url</label>
+        <input name="link" type="url" id="url">
+        <button type="submit">create</button>
+    </form>
+</div>
+
 <!-- LINK-CARD -->
 <div class="list-cards">
     <div>
@@ -39,6 +50,11 @@
 
 {% block scripts %} 
 <script>
-    
+    linkForm.onsubmit = (e) => {
+    e.preventDefault();
+    postLink(linkForm)
+}
+
+
 </script>
 {% endblock scripts %}

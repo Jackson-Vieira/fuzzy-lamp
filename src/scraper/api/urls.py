@@ -6,7 +6,7 @@ from . import viewsets
 app_name = 'scraper'
 
 urlpatterns = [
-    path('me/links/', viewsets.myLinks, name='me_links')
+    # path('me/links/', viewsets.myLinks, name='me_links')
 ]
 
 router = SimpleRouter()
