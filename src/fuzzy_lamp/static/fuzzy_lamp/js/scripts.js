@@ -61,15 +61,13 @@ const postLink = async (form) => {
             body: new FormData(form),
             headers: {'X-CSRFToken': csrftoken},
         });
-        data = await res.json();
-        console.log(data)
+        data = await res.json(); // this don't return a Error except if is the status response is 404, 400...
         addLink(data); 
         form.reset();
 
-    } catch (error) {
-        alert(error);
-    }
-    alert('a')
+    } catch {
+        alert("Opss!");
+    };
     document.getElementById("btn-link-submit").disabled = false;
 }
 

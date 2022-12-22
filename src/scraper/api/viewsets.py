@@ -32,7 +32,7 @@ class Links(ListAPIView):
 class LinkViewSet(ModelViewSet):
     queryset = Link.objects.all()
     serializer_class = LinkSerializer
-    permission_classes = [IsAuthenticatedOrReadOnly]
+    # permission_classes = [IsAuthenticatedOrReadOnly]
     filter_backends = [filters.DjangoFilterBackend]
     filterset_class = LinkFilterSet
 
@@ -53,6 +53,6 @@ class LinkViewSet(ModelViewSet):
         link = request.data.get('link')
         if not Link.objects.filter(link=link).exists():
             return super().create(request, *args, **kwargs)
-        return Response({'This link alrealdy exists'}, status=status.HTTP_400_BAD_REQUEST)
+        return Response({'message':'This link alrealdy exists'}, status=status.HTTP_400_BAD_REQUEST)
 
     # destroy
