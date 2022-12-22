@@ -1,22 +1,42 @@
-/* .color1 {color: #4c78dd;}
-    .color2 {color: #20a8d8;}
-    .color3 {color: #20dad8;}
-    .color4 {color: #62e3e1;}
-    .color5 {color: #f2efed;} */
+@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&family=Poppins:wght@400;700&family=Roboto:wght@400;700&display=swap');
+
+:root {
+    --mint-cream: #f7fff7ff;
+    --jet: #343434ff;
+    --space-cadet: #2f3061ff;
+    --yellow-crayola: #ffe66dff;
+    --air-superiority-blue: #6ca6c1ff;
+    --pretty-blue: #007bff;
+}
+/* USE var() */
+
+/* body {
+    
+} */
 
 body {
-    background: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+    font-family: 'Kumbh Sans', sans-serif;
+}
+
+
+a {
+    text-decoration: none;
+    color: var(--pretty-blue);
+}
+
+a:hover {
+    color: #3092fc;
 }
 
 .navbar {
     width: 100%;
     height: 50px;
-    background-color: #f2efed;
+    background-color: var(--jet);
     display: flex;
     justify-content: space-around;
     align-items: center;
     flex-direction: row;
-    box-shadow: 0 4px 4px 0 rgba(0,0,0,.2);
+    color: #fff;
 }
 
 #logo {
@@ -36,63 +56,108 @@ body {
 
 }
 
-
-
-.btn {
-    border: none;
-    background-color: transparent;
-    padding: 5px;
-    border-radius: 3px;
-}
-
-.icon {
-    width: 15px;
-    height: 15px;
-    overflow: hidden;
-    vertical-align: middle;
-}
-
-#btn-post {
-    display: flex;
-    gap: 3px;
-    border: 2px solid;
-    color: black;
-    border-color: black;
-}
-
-#btn-login {
-    color: white;
-    background-color: greenyellow;
-}
-
-/* .variant-green {
-
-}
-
-.variant-red {
-
-} */
 .container {
     display: flex;
     flex-direction: column;
     padding: 50px;
 }
+ 
 
+#footer {
+    display: flex;
+    justify-content: center;
+    padding: 15px;
+    background-color: var(--mint-cream);
+}
+
+.btn {
+    border: none;
+    padding: 5px;
+    border-radius: 3px;
+}
+
+#btn-login {
+}
+#btn-register{   
+}
+
+
+/* SEARCH */
+.search {
+    display: flex;
+    position: relative;
+}
+
+.search > input{
+    width: 50%;
+    border: 1px solid #dfdbd9;
+    border-right: none;
+    padding: 5px;
+    height: 20px;
+    border-radius: 10px 0 0 10px;
+    outline: none;
+    color: black;
+    height: 36px;
+}
+
+.search > button {
+    width: 40px;
+    height: 36px;
+    border: 1px solid #dfdbd9;
+    background: #dfdbd9;
+    text-align: center;
+    color: #fff;
+    border-radius: 0 10px 10px 0;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+#PostLinkForm {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#PostLinkForm  label{
+    color: grey;
+}
+
+#PostLinkForm  input {
+    width: 200px;
+    border: 1px solid #dfdbd9;
+    padding: 5px;
+    border-radius: 10px;
+    outline: none;
+    color: rgb(15, 10, 10);
+}
+
+#PostLinkForm  button {
+    width: 70px;
+    text-align: center;
+    padding: 5px;
+    border-radius: 10px;
+    background-color: var(--mint-cream);
+    border: 1px solid #dfdbd9;
+    cursor: pointer;
+}
+
+/* CARDS */
 .list-cards {
     width: 100%;
     display: flex;
     flex-direction: column;
     margin-top: 20px;
-    gap: 10px;
+    gap: 20px;
 }
 
 .card-book {
     height: 200px;
     display: flex;    
-    background-color: whitesmoke;
+    background-color: var(--mint-cream);
     padding: 15px;
-    box-shadow: 0px 6px 6px 0 rgba(0,0,0,.2);
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
+
 
 #card-info {
     display: flex;
@@ -107,6 +172,7 @@ body {
 }
 
 #cardTitle {
+    
     margin-bottom: 10px;
 }
 
@@ -124,33 +190,6 @@ body {
     bottom: 0;
 }
 
-.search {
-    display: flex;
-    position: relative;
-}
-
-#searchTerm{
-    border: 3px solid #dfdbd9;
-    border-right: none;
-    padding: 5px;
-    height: 20px;
-    border-radius: 5px 0 0 5px;
-    outline: none;
-    color: black;
-    height: 36px;
-}
-
-.searchButton {
-    width: 40px;
-    height: 36px;
-    border: 1px solid #dfdbd9;
-    background: #dfdbd9;
-    text-align: center;
-    color: #fff;
-    border-radius: 0 5px 5px 0;
-    cursor: pointer;
-    font-size: 20px;
-}
 
 /* LINKS */
 .link-wrapper {
@@ -176,29 +215,7 @@ body {
 
 }
 
-main > h1 {
-    margin-bottom: 15px;
-}
-
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    width: 20vw;
-}
-
-form > div {
-    display: flex;
-    flex-direction: column;
-}
-
-form > div > label {
-   text-transform: capitalize; 
-}
-
-
 /* LINKS DETAIL */
-
 .linkDetailWrapper {
     width: 100%;
     display: flex;
@@ -213,7 +230,6 @@ form > div > label {
     gap: 10px;
 }
 
-
 .spinner {
     border: 6px solid rgba(0, 0, 0, 0.1);
     border-left-color: #22a6b3;
@@ -223,16 +239,16 @@ form > div > label {
     animation: spin 1s linear infinite;
 }
 
-#footer {
-    display: flex;
-    justify-content: center;
-    padding: 15px;
-    background-color: wheat;
-}
-
-
 @keyframes spin {
 to {
     transform: rotate(360deg);
 }
 }
+
+.green {
+    color: green;
+}
+
+.red {
+    color: red;
+} 

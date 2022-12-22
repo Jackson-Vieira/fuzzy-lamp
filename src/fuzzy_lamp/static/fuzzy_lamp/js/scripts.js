@@ -90,9 +90,7 @@ const updateListLinks = (links) => {
         <div class="card-book">
                 <img id="imageCardBook" src="${link.image_url}" alt="">
                 <div id="card-info">
-                    <h2 id="cardTitle"> ${link.name.length > 30 ? link.name.slice(0, 30)+' [...]' : link.name} <span>
-                        (Capa Comum)
-                    </span></h2> 
+                    <h2 id="cardTitle"> <a href=${link.link} >${link.name.length > 30 ? link.name.slice(0, 30)+'  ...' : link.name}</a></h2> 
                     <p> Curent price: R$ ${link.current_price} </p>
                     <p> Last Price: R$ ${link.old_price} </p>
                     <p> Difference: R$ ${link.price_difference} </p>
@@ -107,12 +105,11 @@ const updateListLinks = (links) => {
 
 const addLink = (link) => {
     const listCards = document.querySelector('.list-cards');
-
     let template = `
         <div class="card-book">
                 <img id="imageCardBook" src="${link.image_url}" alt="">
                 <div id="card-info">
-                    <h2 id="cardTitle"> ${link.name.length > 30 ? link.name.slice(0, 30)+' [...]' : link.name} <span>
+                    <h2 id="cardTitle"> ${link.name.length > 30 ? link.name.slice(0, 30)+' ...' : link.name} <span>
                         (Capa Comum)
                     </span></h2> 
                     <p> Curent price: R$ ${link.current_price} </p>
