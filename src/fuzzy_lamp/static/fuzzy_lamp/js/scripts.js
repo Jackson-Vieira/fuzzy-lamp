@@ -69,6 +69,8 @@ const postLink = async (form) => {
     } catch (error) {
         alert(error);
     }
+    alert('a')
+    document.getElementById("btn-link-submit").disabled = false;
 }
 
 const searchLinks = async(keyword) => {

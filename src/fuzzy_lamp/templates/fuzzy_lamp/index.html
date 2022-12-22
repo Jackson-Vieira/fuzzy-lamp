@@ -26,7 +26,7 @@
         placeholder="https://www.amazon.com.br/Test-Driven-Development-Teste-Design-Mundo/dp/8566250044/"
         autocomplete="off" 
         >
-        <button type="submit">create</button>
+        <button disable id="btn-link-submit" type="submit">create</button>
     </form>
 </div>
 <!-- LINKS -->
@@ -39,7 +39,8 @@
 
     PostLinkForm.onsubmit = (e) => {
     e.preventDefault();
-    postLink(linkForm);
+    postLink(PostLinkForm);
+    document.getElementById("btn-link-submit").disabled = true;
     }
 
     document.getElementById('searchButton').addEventListener("click", () => {

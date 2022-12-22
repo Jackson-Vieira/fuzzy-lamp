@@ -135,7 +135,7 @@ CELERY_ALWAYS_EAGER = True
 CELERY_BEAT_SCHEDULE = {
       'update-every-60-seconds': {
         'task': 'scraper.tasks.update_books',
-        'schedule': 120, 
+        'schedule': 120, # 2 MINUTES 
         #'args': (16, 16),
         'options': {
             'expires': 15.0,
