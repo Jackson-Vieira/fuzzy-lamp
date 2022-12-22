@@ -9,3 +9,6 @@ dump.rdb
 celerybeat-schedule
 
 frontend
+
+
+*.md

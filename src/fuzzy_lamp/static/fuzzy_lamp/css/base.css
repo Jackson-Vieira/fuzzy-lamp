@@ -76,6 +76,19 @@ a:hover {
     border-radius: 3px;
 }
 
+#btn-delete {
+    display: flex;
+    border: none;
+    align-self: flex-end;
+    justify-content: flex-end;
+    position: absolute;
+    right: 0;
+    padding: 0;
+    color: var(--space-cadet);
+    cursor: pointer;
+
+}
+
 #btn-login {
 }
 #btn-register{   

@@ -6,7 +6,6 @@ let keyword = search_params.get('name');
 function getCurrentURL () {
     return window.location.href
   }
-
 function getCookie(name) {
     let cookieValue = null;
     if (document.cookie && document.cookie !== '') {
@@ -22,6 +21,7 @@ function getCookie(name) {
     return cookieValue;
 }
 const csrftoken = getCookie('csrftoken');
+
 
 const getAllLinks = async (keyword) => {
     let url = `${apiURL}links/`;
@@ -62,13 +62,29 @@ const postLink = async (form) => {
             headers: {'X-CSRFToken': csrftoken},
         });
         data = await res.json(); // this don't return a Error except if is the status response is 404, 400...
-        addLink(data); 
+        createLinkElement(link)
         form.reset();
 
     } catch {
         alert("Opss!");
     };
     document.getElementById("btn-link-submit").disabled = false;
+}
+
+const deleteLink = async (link_id) => {
+    // let formData = new FormData(form);
+    const url = `${apiURL}links/${link_id}/`;
+    try {
+        res = await fetch(url, {
+            method: 'DELETE',
+            headers: {'X-CSRFToken': csrftoken},
+        });
+
+    } catch (e) {
+        console.log(e)
+        alert("Opss!");
+    };
+
 }
 
 const searchLinks = async(keyword) => {
@@ -82,46 +98,42 @@ const searchLinks = async(keyword) => {
     // query_params = new URLSearchParams()
 }
 
-const updateListLinks = (links) => {
+const createLinkElement = (link) => {
     const listCards = document.querySelector('.list-cards');
-    
-    links.map( (link) => {
-        let template = `
+
+    let template = `
         <div class="card-book">
                 <img id="imageCardBook" src="${link.image_url}" alt="">
                 <div id="card-info">
+                    <button id="btn-delete"> <i class="fa-solid fa-trash"></i> </button>
                     <h2 id="cardTitle"> <a href=${link.link} >${link.name.length > 30 ? link.name.slice(0, 30)+'  ...' : link.name}</a></h2> 
                     <p> Curent price: R$ ${link.current_price} </p>
                     <p> Last Price: R$ ${link.old_price} </p>
                     <p> Difference: R$ ${link.price_difference} </p>
                     <p id="last-updated"> Updated  ${new Date(Date.parse(link.updated))}</p>
                 </div>
-        </div>
-    `;
-        listCards.insertAdjacentHTML("afterbegin", template)
+        </div>`;  
+
+        const linkEl = document.createElement('div')
+        linkEl.innerHTML = template;
+        listCards.appendChild(linkEl);
+
+        const btnDelete=  linkEl.querySelector('#btn-delete');
+        // Events
+        
+        btnDelete.addEventListener('click', () => {
+            deleteLink(link.id);
+            linkEl.remove()
         }
     )
+}
+
+const updateListLinks = (links) => {
+    links.map( (link) => {
+        createLinkElement(link)
+    })
 } 
 
-const addLink = (link) => {
-    const listCards = document.querySelector('.list-cards');
-    let template = `
-        <div class="card-book">
-                <img id="imageCardBook" src="${link.image_url}" alt="">
-                <div id="card-info">
-                    <h2 id="cardTitle"> ${link.name.length > 30 ? link.name.slice(0, 30)+' ...' : link.name} <span>
-                        (Capa Comum)
-                    </span></h2> 
-                    <p> Curent price: R$ ${link.current_price} </p>
-                    <p> Last Price: R$ ${link.old_price} </p>
-                    <p> Difference: R$ ${link.price_difference} </p>
-                    <p id="last-updated"> Updated  ${new Date(Date.parse(link.updated))}</p>
-                </div>
-        </div>
-    `;
-
-    listCards.insertAdjacentHTML("afterbegin", template)
-}
 
 if (keyword){
     document.getElementById('searchTerm').value = search_params.get('name')
