@@ -2,15 +2,13 @@ from django.db.models.aggregates import Avg, Max, Min
 
 from django_filters import rest_framework as filters
 
-
+from rest_framework import mixins
 from rest_framework import status
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAdminUser, IsAuthenticated
 from rest_framework.generics import ListAPIView
-from rest_framework.viewsets import ModelViewSet
-
-from rest_framework import mixins
+from rest_framework.viewsets import GenericViewSet
 from rest_framework.generics import GenericAPIView
 
 from django.shortcuts import get_object_or_404
@@ -29,7 +27,13 @@ class Links(ListAPIView):
     queryset = Link.objects.all() 
     serializer_class = LinkSerializer
 
-class LinkViewSet(ModelViewSet):
+class LinkViewSet(
+        mixins.ListModelMixin,
+        mixins.CreateModelMixin,
+        mixins.DestroyModelMixin,
+        mixins.RetrieveModelMixin,
+        GenericViewSet
+        ):
     queryset = Link.objects.all()
     serializer_class = LinkSerializer
     # permission_classes = [IsAuthenticatedOrReadOnly]

@@ -39,14 +39,14 @@
 <script>
 
     PostLinkForm.onsubmit = (e) => {
-    e.preventDefault();
-    postLink(PostLinkForm);
-    document.getElementById("btn-link-submit").disabled = true;
-    }
+        e.preventDefault();
+        postLink(PostLinkForm);
+        document.getElementById("btn-link-submit").disabled = true;
+        }
 
-    document.getElementById('searchButton').addEventListener("click", () => {
-        keyword = document.getElementById('searchTerm').value
-        searchLinks(keyword)
+        document.getElementById('searchButton').addEventListener("click", () => {
+            keyword = document.getElementById('searchTerm').value
+            searchLinks(keyword)
     })
 
 </script>

@@ -134,11 +134,7 @@ const updateListLinks = (links) => {
     })
 } 
 
-
 if (keyword){
     document.getElementById('searchTerm').value = search_params.get('name')
     getAllLinks(keyword)
 }
-
-
-
